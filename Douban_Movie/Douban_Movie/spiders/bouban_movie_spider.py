@@ -12,9 +12,12 @@ class DoubanMovieSpider(Spider):
 
     def start_requests(self):
         rootURL = self.url + '?start=0&filter='
+        # rootURL = 'https://movie.douban.com/top250?start=0&filter='
         yield Request(rootURL, headers=self.heards)
 
     def parse(self, response):
+
+        print(response)
 
         movies = response.xpath('//ol[@class="grid_view"]/li')
         for movie in movies:
